@@ -3,5 +3,44 @@
 {% block content %}
 <h1>Portfolio</h1>
 <p>Bienvenido al portafolio de Maria Emege. Aquí podrás explorar las obras de la artista.</p>
-{% endblock %}
 
+<div class="container my-5">
+    {% if images %}
+    <div class="row g-4">
+        {% for image in images %}
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="card">
+                <img 
+                    src="{{ image.thumbnail_url }}" 
+                    class="card-img-top img-fluid portfolio-image" 
+                    alt="{{ image.title }}" 
+                    loading="lazy"
+                    data-bs-toggle="modal" 
+                    data-bs-target="#imageModal{{ forloop.counter }}">
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="imageModal{{ forloop.counter }}" tabindex="-1" aria-labelledby="imageModalLabel{{ forloop.counter }}" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="imageModalLabel{{ forloop.counter }}">{{ image.title }}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="{{ image.full_url }}" class="img-fluid" alt="{{ image.title }}">
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="text-center my-5">
+        <h2>No hay obras disponibles en este momento.</h2>
+        <p>Por favor, vuelve más tarde para explorar las obras de arte de Maria Emege.</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,28 @@
+body {
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.portfolio-image {
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 8px;
+}
+
+.portfolio-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.5);
+}
+
+.modal-content {
+    background-color: #1c1c1c;
+    color: white;
+    border-radius: 10px;
+}
+
+.card {
+    background-color: #2a2a2a;
+    border: none;
+    overflow: hidden;
+}
